@@ -35,6 +35,7 @@ function Titulo(props) {
   return (
     <>
       <Tag>{props.children}</Tag>
+      <title>Aluracord</title>
       <style jsx>{`
             ${Tag} {
                 color: ${appConfig.theme.colors.neutrals['000']};
