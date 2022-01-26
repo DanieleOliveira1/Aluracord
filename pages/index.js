@@ -1,5 +1,7 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import appConfig from '../config.json';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 function GlobalStyle() {
   return (
@@ -35,7 +37,8 @@ function Titulo(props) {
   return (
     <>
       <Tag>{props.children}</Tag>
-      <title>Aluracord</title>
+      <title>Bookcord</title>
+      
       <style jsx>{`
             ${Tag} {
                 color: ${appConfig.theme.colors.neutrals['000']};
@@ -61,7 +64,8 @@ function Titulo(props) {
 // export default HomePage
 
 export default function PaginaInicial() {
-  const username = 'DanieleOliveira1';
+  const [username, setUsername] = React.useState('DanieleOliveira1');
+  const roteamento = useRouter();
 
   return (
     <>
@@ -92,6 +96,13 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              console.log('Alguém submeteu o form');
+              roteamento.push('/chat');
+              // window.location.href = '/chat';
+            }}
+
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -102,7 +113,23 @@ export default function PaginaInicial() {
               {appConfig.name}
             </Text>
 
+            {/*}
+            <input
+              type="text"
+              value={username}
+              onChange={function (event){
+                const valor= event.target.value;
+                setUsername(valor);
+              }}
+            />
+            */}
+
             <TextField
+              value={username}
+              onChange={function (event){
+                const valor= event.target.value;
+                setUsername(valor);
+              }}
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -113,6 +140,7 @@ export default function PaginaInicial() {
                 },
               }}
             />
+    
             <Button
               type='submit'
               label='Entrar'
