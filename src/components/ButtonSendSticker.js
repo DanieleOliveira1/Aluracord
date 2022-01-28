@@ -13,7 +13,7 @@ export function ButtonSendSticker(props) {
     >
       <Button
         styleSheet={{
-          borderRadius: '50%',
+          borderRadius: '15px',
           padding: '0 3px 0 0',
           minWidth: '50px',
           minHeight: '50px',
@@ -29,7 +29,7 @@ export function ButtonSendSticker(props) {
              backgroundColor: appConfig.theme.colors.neutrals[700],
           }
         }}
-        label="😋"
+        label="📚"
         onClick={() => setOpenState(!isOpen)}
       />
       {isOpen && (

@@ -139,7 +139,7 @@ export default function ChatPage() {
                 setMensagem(valor);
               }}
               onKeyPress={(event) => {
-                if (event.key === 'Enter') {
+                if (event.key === 'Enter' ) {
                   event.preventDefault();
                   handleNovaMensagem(mensagem);
                 }
@@ -159,12 +159,42 @@ export default function ChatPage() {
             />
             {/* CallBack */}
 
+            <Button
+                onClick = {() => handleNovaMensagem(mensagem)}  
+                label='Enviar'
+                styleSheet={{ 
+                    display:'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    lineHeight: '0',
+                    padding: '0 3px 0 0',
+                    marginBottom: '8px',
+                    marginRight:'10px',
+                    borderRadius:'15px',
+                    height:'45px',
+                    width:'80px',
+                    minWidth:'30px',
+                    minHeight:'30px',
+                    fontsize: '12px',
+                    backgroundColor: appConfig.theme.colors.neutrals[500],
+                    color:appConfig.theme.colors.neutrals[100],
+                    hover: {
+                         backgroundColor: appConfig.theme.colors.neutrals[700]
+                     }
+          }
+                    
+                }
+            />
+
             <ButtonSendSticker
               onStickerClick={(sticker) => {
                 // console.log('[USANDO O COMPONENTE] Salva esse sticker no banco', sticker);
                 handleNovaMensagem(':sticker: ' + sticker);
               }}
             />
+
+            
+            
           </Box>
         </Box>
       </Box>
